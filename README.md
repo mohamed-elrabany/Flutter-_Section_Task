@@ -1,6 +1,6 @@
-[UI](https://github.com/user-attachments/assets/9dd0ec36-da9a-4eb2-b257-7d266c5e3a3d](https://github.com/user-attachments/assets/8428e9af-5275-4a51-83e8-a52f3895543a)
+[UI](https://github.com/user-attachments/assets/8428e9af-5275-4a51-83e8-a52f3895543a)
 
-**Mohamed Loay - 230540827**
+**Mohamed Loay - 230540827**  
 Task Description:
 ```
 A Flutter demo project,
