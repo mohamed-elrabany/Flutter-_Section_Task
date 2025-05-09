@@ -68,7 +68,7 @@ class DetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
-                const FavoriteWidget(),
+                FavoriteWidget(index: items.items.indexOf(items.selctedItem!)),
               ],
             ),
             Padding(
