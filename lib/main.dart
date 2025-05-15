@@ -5,6 +5,7 @@ import 'package:flutter_taskone/add_item/add_item_screen.dart';
 import 'package:flutter_taskone/dashboard/nav_bar.dart';
 import 'package:flutter_taskone/favorite/favorite_model.dart';
 import 'package:flutter_taskone/profile/user_model.dart';
+import 'package:flutter_taskone/quiz/quiz_page.dart';
 import "package:provider/provider.dart";
 
 

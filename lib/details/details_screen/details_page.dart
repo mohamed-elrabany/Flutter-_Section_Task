@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_taskone/add_item/item_model.dart';
 import 'package:flutter_taskone/profile/profile_page/profile_page.dart';
+import 'package:flutter_taskone/quiz/quiz_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../profile/user_model.dart';
@@ -104,7 +105,10 @@ class DetailsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => QuizPage()),
+          );
         },
         child: const Icon(Icons.add),
       ),
