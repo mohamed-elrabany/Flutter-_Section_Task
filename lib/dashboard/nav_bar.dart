@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_taskone/favorite/favorite_screen.dart';
 import 'package:flutter_taskone/profile/profile_page/profile_page.dart';
 import 'package:flutter_taskone/qoute/quote_screen.dart';
-import 'package:flutter_taskone/quiz/quiz_page.dart';
 
 import 'dashboard_screen.dart';
 
