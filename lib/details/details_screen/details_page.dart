@@ -107,7 +107,7 @@ class DetailsPage extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => QuizPage()),
+            MaterialPageRoute(builder: (context) => Dashboard()),
           );
         },
         child: const Icon(Icons.add),
