@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_taskone/qoute/quote.dart';
 import 'package:flutter_taskone/qoute/service.dart';
 
-class QouteScreen extends StatefulWidget {
-  const QouteScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<QouteScreen> createState() => _QouteScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _QouteScreenState extends State<QouteScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   late Future<List<Quote>> future;
 
   @override

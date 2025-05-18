@@ -25,8 +25,8 @@ class _NavBarState extends State<NavBar> {
       body: IndexedStack(
       index: _selectedIndex,
       children: [
+        HomeScreen(),
         DashboardScreen(),
-        QouteScreen(),
         FavoriteScreen(),
         ProfilePage()
       ],
@@ -39,8 +39,8 @@ class _NavBarState extends State<NavBar> {
 
       },
       destinations: [
+        NavigationDestination(icon: Icon(Icons.home_filled), label: "Home"),
         NavigationDestination(icon: Icon(Icons.dashboard), label: "Dashboard"),
-        NavigationDestination(icon: Icon(Icons.format_quote), label: "Quote"),
         NavigationDestination(icon: Icon(Icons.favorite), label: "Favorite"),
         NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
       ]),
