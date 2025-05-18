@@ -1,11 +1,14 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_taskone/add_item/item_model.dart';
 import 'package:flutter_taskone/dashboard/dashboard_screen.dart';
 import 'package:flutter_taskone/add_item/add_item_screen.dart';
-import 'package:flutter_taskone/dashboard/nav_bar.dart';
 import 'package:flutter_taskone/favorite/favorite_model.dart';
 import 'package:flutter_taskone/profile/user_model.dart';
+import 'package:flutter_taskone/screen/splash_animated.dart';
 import "package:provider/provider.dart";
+
+
 
 
 void main() {
@@ -34,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      home: NavBar(),
+      home:splash_animated()
     );
   }
 }
