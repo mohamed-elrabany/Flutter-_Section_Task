@@ -147,10 +147,7 @@ class _AddItemScreenState extends State<AddItemScreen> {
 
         item.selectedImage?.clear();
 
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => DashboardScreen()) );
+          Navigator.pop(context);
 
       }),
     );

@@ -36,6 +36,7 @@ class _NavBarState extends State<NavBar> {
             setState(() {
               _selectedIndex=index;
             });
+
       },
       destinations: [
         NavigationDestination(icon: Icon(Icons.dashboard), label: "Dashboard"),
