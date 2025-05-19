@@ -48,7 +48,6 @@ class DetailsPage extends StatelessWidget {
         title: Text("The ${selectedItem?.title ?? "Porche"}"),
         centerTitle: true,
         titleTextStyle: const TextStyle(
-          color: Colors.black87,
           fontWeight: FontWeight.bold,
           fontSize: 32,
         ),
@@ -77,7 +76,6 @@ class DetailsPage extends StatelessWidget {
               child: Text(
                 selectedItem.body,
                 style: const TextStyle(
-                  color: Colors.black87,
                   fontSize: 18,
                 ),
                 textAlign: TextAlign.justify,
