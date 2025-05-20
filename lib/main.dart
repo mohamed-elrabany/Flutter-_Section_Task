@@ -5,9 +5,11 @@ import 'package:flutter_taskone/dashboard/dashboard_screen.dart';
 import 'package:flutter_taskone/add_item/add_item_screen.dart';
 import 'package:flutter_taskone/dashboard/nav_bar.dart';
 import 'package:flutter_taskone/favorite/favorite_model.dart';
+import 'package:flutter_taskone/login/login_model.dart';
 import 'package:flutter_taskone/profile/user_model.dart';
-import 'package:flutter_taskone/regestration/login.dart';
-import 'package:flutter_taskone/screen/splash_animated.dart';
+import 'package:flutter_taskone/login/login_page/login_screen.dart';
+import 'package:flutter_taskone/signup/signup_model.dart';
+import 'package:flutter_taskone/splash/splash_animated.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -23,6 +25,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => ItemModel()),
         ChangeNotifierProvider(create: (context) => FavoriteModel()),
         ChangeNotifierProvider(create: (context) => themeProvider),
+        ChangeNotifierProvider(create: (context) => SignupModel()),
+        ChangeNotifierProvider(create: (context) => LoginModel()),
       ],
       child: const MyApp(),
     ),
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: themeProvider.currentTheme,
-      home: splash_animated(),
+      home: SplashAnimated(),
     );
   }
 }

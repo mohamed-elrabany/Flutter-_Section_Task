@@ -1,21 +1,36 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_taskone/login/login_page/login_screen.dart';
 import 'package:flutter_taskone/profile/user_model.dart';
+import 'package:flutter_taskone/signup/signup_model.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Theme/theme_mode.dart';
 import '../profile_widget/options.dart';
 import "package:provider/provider.dart";
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Load user data once widget is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<SignupModel>(context, listen: false).loadUserData();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // No need to listen here, Consumer below handles updates
+    // Using Consumer to rebuild UI when SignupModel changes
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -108,88 +123,94 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Container(
               width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Email"),
-                        Text("email"),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Password"),
-                        Text("*******"),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Name"),
-                        Text("Mohamed Loay"),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Phone"),
-                        Text("+201011993597"),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Gender"),
-                        Text("Male"),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  Container(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text("Dark Mode"),
-                        Consumer<ThemeProvider>(
-                          builder: (context, themeProvider, child) {
-                            return IconButton(
-                              onPressed: () {
-                                themeProvider.toggleTheme();
+              child: Consumer<SignupModel>(
+                builder: (context, signupModel, child) {
+                  final fullname = signupModel.fullName.text;
+                  final email = signupModel.email.text;
+                  final password = signupModel.password.text;
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Email"),
+                            Text(email),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Password"),
+                            Text('•' * password.length),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text("Name"),
+                            Text(fullname),
+                          ],
+                        ),
+                      ),
+                      const Divider(),
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text("Dark Mode"),
+                            Consumer<ThemeProvider>(
+                              builder: (context, themeProvider, child) {
+                                return IconButton(
+                                  onPressed: () {
+                                    themeProvider.toggleTheme();
+                                  },
+                                  icon: Icon(
+                                    themeProvider.lightMode
+                                        ? Icons.dark_mode_outlined
+                                        : Icons.light_mode_outlined,
+                                  ),
+                                );
                               },
-                              icon: Icon(
-                                themeProvider.lightMode
-                                    ? Icons.dark_mode_outlined
-                                    : Icons.light_mode_outlined,
-                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(10.0),
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.red,
+                          ),
+                          onPressed: () async {
+                            final prefs = await SharedPreferences.getInstance();
+                            await prefs.clear();
+
+                            signupModel.clearVar();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => LoginPage()),
                             );
                           },
+                          child: const Text('Logout'),
                         ),
-                      ],
-                    ),
-                  ),
-                ],
+                      ),
+                    ],
+                  );
+                },
               ),
             ),
           ],
